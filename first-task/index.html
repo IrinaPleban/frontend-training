@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/foundation-sites/dist/js/foundation.min.js"></script>
+    <script src="News.js"></script>
+    <script src="index.js"></script>
+    <title>News</title>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-y grid-padding-y">
+            <label>
+                Select source(-s)
+                <select multiple id="sources"></select>
+            </label>
+            <button id="btnShow" type="button" class="success button" onclick="btnShow()">Show</button>
+        </div>
+        <div id="news" class="grid-x grid-padding-x"></div>
+    </div>
+</body>
+</html>
