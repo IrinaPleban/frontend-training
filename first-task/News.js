@@ -1,26 +1,14 @@
 class News {
-    constructor () {
-        this.key = '80df597e0ca14ef6894565929343e289';
-        this.sources = `https://newsapi.org/v2/sources?apiKey=${this.key}`;
-        this.source = null;
-        this.url = null;
+    constructor (option) {
+        this.key = option.key;
+        this.url = option.url || null;
     }
 
     getNews () {
-        this.updateUrl();
-        return fetch(this.url).then(response => {
-            return response.json();
+        //this.updateUrl();
+        return fetch(this.url).then(news => {
+            return news.json().articles;
         });
-    }
-
-    getSources () {
-        return fetch(this.sources).then(response => {
-            return response.json();
-        });
-    }
-
-    setSource (source) {
-        this.source = source;
     }
 
     updateUrl () {
