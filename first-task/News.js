@@ -1,30 +1,29 @@
 class News {
     constructor (options) {
-        this.key = options.key || null;
-        this.url = options.url || null;
+        ({key: this._key, url: this._url} = options);
     }
 
     getNews () {
-        return fetch(this.url).then(response => {
-            return response.json();
-        }).then(response => {
-            return response.articles;
+        return fetch(this._url).then(response => {
+            return response.json().then(response => {
+                return response.articles;
+            });
         });
     }
 
-    setUrl (url) {
-        this.url = url;
+    set url (url) {
+        this._url = url;
     }
 
-    getUrl (url) {
-        return this.url;
+    get url () {
+        return this._url;
     }
 
-    setKey (key) {
-        this.key = key;
+    set key (key) {
+        this._key = key;
     }
 
-    getKey (key) {
-        return this.key;
+    get key () {
+        return this._key;
     }
 }

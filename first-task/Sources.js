@@ -1,39 +1,37 @@
 class Sources {
     constructor (options) {
-        this.key = options.key || null;
-        this.url = options.url || null;
-        this.source = options.source || null;
+        ({key: this._key, url: this._url, source: this._source} = options);
     }
 
     getSources () {
-        return fetch(this.url).then(response => {
-            return response.json();
-        }).then(response => {
-            return response.sources;
+        return fetch(this._url).then(response => {
+            return response.json().then(response => {
+                return response.sources;
+            });
         });
     }
 
-    setUrl (url) {
-        this.url = url;
+    set url (url) {
+        this._url = url;
     }
 
-    getUrl (url) {
-        return this.url;
+    get url () {
+        return this._url;
     }
 
-    setKey (key) {
-        this.key = key;
+    set key (key) {
+        this._key = key;
     }
 
-    getKey (key) {
-        return this.key;
+    get key () {
+        return this._key;
     }
 
-    setSource (source) {
-        this.source = source;
+    set source (source) {
+        this._source = source;
     }
 
-    getSource (source) {
-        return this.source;
+    get source () {
+        return this._source;
     }
 }

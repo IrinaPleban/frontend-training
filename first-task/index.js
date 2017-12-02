@@ -1,8 +1,8 @@
 const key = '80df597e0ca14ef6894565929343e289';
-const url = `https://newsapi.org/v2/`;
+const host = `https://newsapi.org/v2/`;
 const optionForSources = {
     key: key,
-    url: `${url}sources?apiKey=${key}`
+    url: `${host}sources?apiKey=${key}`
 };
 const sources = new Sources(optionForSources);
 
@@ -10,7 +10,6 @@ const optionForNews = {
     key: key
 };
 const news = new News(optionForNews);
-let $newsBlock = null;
 
 $(document).ready(function () {
     const $sourcesBlock = $('#sources');
@@ -20,32 +19,34 @@ $(document).ready(function () {
             $sourcesBlock.append(option);
         }
     });
-    $newsBlock = $('#news');
 });
 
 function btnShow () {
-    const selectArr = selectElements();
-    $newsBlock.empty();
-    if (selectArr.length > 0) {
-        sources.setSource(selectArr);
-        news.setUrl(`${url}everything?sources=${sources.source}&apiKey=${key}`);
-        renderMarkup();
+    const $error = $('#error');
+    const selectedOptions = getSelectedOptions();
+    if (selectedOptions.length > 0) {
+        $error.css('display', 'none');
+        sources.source = selectedOptions;
+        news.url = `${host}everything?sources=${sources.source}&apiKey=${key}`;
+        renderNews();
     } else {
-        alert('Select source(-s)');
+        $error.css('display', '');
     }
 }
 
-function selectElements () {
+function getSelectedOptions () {
     const $sourcesBlock = $('#sources option:selected');
-    const arr = [];
+    const result = [];
     for (const option of $sourcesBlock) {
-        arr.push(option.value);
+        result.push(option.value);
     }
-    return arr;
+    return result;
 }
 
-function renderMarkup () {
-    news.getNews().then(news => {
+function renderNews () {
+    news.getNews().then(news => {        
+        const $newsBlock = $('#news');
+        $newsBlock.empty();
         for (const article of news) {
             const $articleBlock = $("<div class='cell small-4'></div>");
             const author = (article.author) ? `<small class='label secondary'>${article.author}</small>` : '';
