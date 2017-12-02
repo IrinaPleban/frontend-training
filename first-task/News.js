@@ -1,17 +1,30 @@
 class News {
-    constructor (option) {
-        this.key = option.key;
-        this.url = option.url || null;
+    constructor (options) {
+        this.key = options.key || null;
+        this.url = options.url || null;
     }
 
     getNews () {
-        //this.updateUrl();
-        return fetch(this.url).then(news => {
-            return news.json().articles;
+        return fetch(this.url).then(response => {
+            return response.json();
+        }).then(response => {
+            return response.articles;
         });
     }
 
-    updateUrl () {
-        this.url = `https://newsapi.org/v2/everything?sources=${this.source}&apiKey=${this.key}`;
+    setUrl (url) {
+        this.url = url;
+    }
+
+    getUrl (url) {
+        return this.url;
+    }
+    
+    setKey (key) {
+        this.key = key;
+    }
+
+    getKey (key) {
+        return this.key;
     }
 }
