@@ -36,5 +36,4 @@ class Sources {
     getSource (source) {
         return this.source;
     }
-
 }

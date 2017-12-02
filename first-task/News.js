@@ -19,7 +19,7 @@ class News {
     getUrl (url) {
         return this.url;
     }
-    
+
     setKey (key) {
         this.key = key;
     }
