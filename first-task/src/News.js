@@ -1,12 +1,12 @@
-class Sources {
+export default class News {
     constructor (options) {
-        ({key: this._key, url: this._url, source: this._source} = options);
+        ({key: this._key, url: this._url} = options);
     }
 
-    getSources () {
+    getNews () {
         return fetch(this._url).then(response => {
             return response.json().then(response => {
-                return response.sources;
+                return response.articles;
             });
         });
     }
@@ -25,13 +25,5 @@ class Sources {
 
     get key () {
         return this._key;
-    }
-
-    set source (source) {
-        this._source = source;
-    }
-
-    get source () {
-        return this._source;
     }
 }

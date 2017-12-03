@@ -1,3 +1,7 @@
+import $ from 'jquery';
+import News from './News';
+import Sources from './Sources';
+
 const key = '80df597e0ca14ef6894565929343e289';
 const host = `https://newsapi.org/v2/`;
 const optionForSources = {
