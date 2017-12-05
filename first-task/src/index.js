@@ -14,7 +14,7 @@ const optionForNews = {
     key: key
 };
 const news = new News(optionForNews);
-
+console.log('test plugin');
 $(document).ready(function () {
     const $sourcesBlock = $('#sources');
     sources.getSources().then(sources => {

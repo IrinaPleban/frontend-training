@@ -4,7 +4,8 @@
   "description": "News portal",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "gulp-serve": "gulp webserver"
   },
   "dependencies": {
     "foundation-sites": "^6.4.4-rc1",
@@ -17,6 +18,9 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1",
+    "webpack-stream": "^4.0.0"
   }
 }
