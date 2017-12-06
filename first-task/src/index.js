@@ -23,6 +23,8 @@ $(document).ready(function () {
             $sourcesBlock.append(option);
         }
     });
+
+    $('#btnShow').click(btnShow);
 });
 
 function btnShow () {

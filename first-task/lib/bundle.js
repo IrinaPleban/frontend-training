@@ -9544,6 +9544,8 @@ var news = new _News2.default(optionForNews);
             }
         }
     });
+
+    (0, _jquery2.default)('#btnShow').click(btnShow);
 });
 
 function btnShow() {
