@@ -1,23 +1,23 @@
 import $ from 'jquery';
-import News from './News';
-import Sources from './Sources';
+import News from './news';
+import Sources from './sources';
 
 const key = '80df597e0ca14ef6894565929343e289';
 const host = `https://newsapi.org/v2/`;
 const optionForSources = {
-    key: key,
+    key,
     url: `${host}sources?apiKey=${key}`
 };
 const sources = new Sources(optionForSources);
 
 const optionForNews = {
-    key: key
+    key
 };
 const news = new News(optionForNews);
 console.log('test plugin');
 $(document).ready(function () {
     const $sourcesBlock = $('#sources');
-    sources.getSources().then(sources => {
+    sources.get().then(sources => {
         for (const source of sources) {
             let option = $(`<option value="${source.id}">${source.name}</option>`);
             $sourcesBlock.append(option);
@@ -41,16 +41,16 @@ function btnShow () {
 }
 
 function getSelectedOptions () {
-    const $sourcesBlock = $('#sources option:selected');
+    const $selectedOptions = $('#sources option:selected');
     const result = [];
-    for (const option of $sourcesBlock) {
+    for (const option of $selectedOptions) {
         result.push(option.value);
     }
     return result;
 }
 
 function renderNews () {
-    news.getNews().then(news => {        
+    news.get().then(news => {
         const $newsBlock = $('#news');
         $newsBlock.empty();
         for (const article of news) {

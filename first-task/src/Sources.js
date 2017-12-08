@@ -1,30 +1,15 @@
-export default class Sources {
+import Retriever from './retriever';
+
+export default class Sources extends Retriever {
     constructor (options) {
-        ({key: this._key, url: this._url, source: this._source} = options);
+        super(options);
+        ({source: this._source} = options);
     }
 
-    getSources () {
-        return fetch(this._url).then(response => {
-            return response.json().then(response => {
-                return response.sources;
-            });
+    get () {
+        return super.get().then(response => {
+            return response.sources;
         });
-    }
-
-    set url (url) {
-        this._url = url;
-    }
-
-    get url () {
-        return this._url;
-    }
-
-    set key (key) {
-        this._key = key;
-    }
-
-    get key () {
-        return this._key;
     }
 
     set source (source) {
