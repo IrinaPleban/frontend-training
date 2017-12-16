@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import News from './news';
 import Sources from './sources';
+import 'foundation-sites/dist/css/foundation.min.css';
+import Class1 from './class.json';
 
 const key = '80df597e0ca14ef6894565929343e289';
 const host = `https://newsapi.org/v2/`;

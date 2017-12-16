@@ -4,8 +4,8 @@
   "description": "News portal",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "gulp-serve": "gulp webserver"
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js"
   },
   "dependencies": {
     "foundation-sites": "^6.4.4-rc1",
@@ -19,8 +19,11 @@
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "gulp": "^3.9.1",
-    "gulp-webserver": "^0.9.1",
-    "webpack-stream": "^4.0.0"
+    "copy-webpack-plugin": "^4.3.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1"
   }
 }

@@ -1,0 +1,12 @@
+{
+    "name": "Class1",
+    "methods": {
+        "method1": "console.log('Method 1')",
+        "method2": "console.log('Method 2')"
+    },
+    "properties": {
+        "prop1": "prop1",
+        "prop2": 2,
+        "prop3": true
+    }
+}
